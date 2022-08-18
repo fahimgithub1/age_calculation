@@ -1,10 +1,11 @@
 import classas from './Error.module.css';
 import Card from "../UI/Card";
 import Button from './Button';
+import Wrapper from '../Helpers/Wrapper'
 
 export default function ErrorModel({...props}){
     return(
-        <div>
+        <Wrapper>
             <div className={classas.backdrop} onClick={props.onConferm}/>
                 <Card classas={classas.modal}>
                     <header className={classas.header}>
@@ -17,6 +18,7 @@ export default function ErrorModel({...props}){
                         <Button>okey</Button>
                     </footer>
                 </Card>
-        </div>
+        
+        </Wrapper>
     );
 };

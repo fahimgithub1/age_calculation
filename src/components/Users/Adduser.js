@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 import classes from "./Addusers.module.css";
 import {useState} from 'react';
 import ErrorModel from "../UI/ErrorModal";
+import Wrapper from "../Helpers/Wrapper";
 
 export default function AddUser({...props}){
     const [enterUserName, setEnterUserName] = useState('');
@@ -25,28 +26,28 @@ export default function AddUser({...props}){
         
         // condition
         if(enterUserName.trim().length === 0 || enterUserage.trim().length ===0){
-            setEnterUserName('');
-            setEnterUserAge('');
+            // setEnterUserName('');
+            // setEnterUserAge('');
 
             setError({
                 title: 'Invalid input',
                 massage: 'Please enter a valid name and age (non-empty valus).',
-            })
+            });
 
             return;
-        }
+        };
 
         if(+enterUserage < 1){
-            setEnterUserName('');
-            setEnterUserAge('');
+            // setEnterUserName('');
+            // setEnterUserAge('');
 
             setError({
                 title: 'Invalid age',
                 massage: 'Please enter a valid age (age>0).',
-            })
+            });
 
             return;
-        }
+        };
         
         props.onAddUser(enterUserName, enterUserage);
         // console.log(enterUserName+"  "+enterUserage)
@@ -59,7 +60,7 @@ export default function AddUser({...props}){
     };
 
     return(
-        <div>
+        <Wrapper>
             {error && <ErrorModel title={error.title} massage={error.massage} onConferm={ErrorHandler}/>}
            
             <Card className={classes.input}>
@@ -79,6 +80,6 @@ export default function AddUser({...props}){
                     <Button type="submit">Add User</Button>
                 </form>
             </Card>
-        </div>
+        </Wrapper>
     );
 };
